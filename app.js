@@ -16,7 +16,7 @@ rl.question('Enter the youtube link: ', (youtubeUrl) => {
   }
   rl.question('Enter the file name: ', (pseudoName) => {
     const fileName = pseudoName + '.mp3';      
-    const outputFilePath = path.resolve(__dirname, '..',  fileName); // Path to your output audio file
+    const outputFilePath = path.resolve(__dirname, './downloads',  fileName); // Path to your output audio file
     if (!pseudoName) {
       console.error('Please provide a name for the file');
       rl.close();

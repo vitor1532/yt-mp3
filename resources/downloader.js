@@ -1,6 +1,6 @@
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
-const ytdl = require('ytdl-core');
+const ytdl = require('@distube/ytdl-core');
 const path = require('path');
 const fs = require('fs');
 
@@ -29,7 +29,7 @@ async function downloadAndConvertToMp3(youtubeUrl, outputFilePath) {
   });
 
   videoStream.on('error', (err) => {
-    console.error('Error downloading the video:', err);
+    console.error('Error downloading the video:', err.message);
     fs.unlinkSync(tempFilePath);
   });
 }
