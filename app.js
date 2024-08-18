@@ -1,6 +1,6 @@
-
 const readline = require('readline');
 const path = require('path');
+const cliProgress = require('cli-progress');
 const { downloadAndConvertToMp3 } = require('./resources/downloader');
 
 const rl = readline.createInterface({
@@ -16,13 +16,12 @@ rl.question('Enter the youtube link: ', (youtubeUrl) => {
   }
   rl.question('Enter the file name: ', (pseudoName) => {
     const fileName = pseudoName + '.mp3';      
-    const outputFilePath = path.resolve(__dirname, './downloads',  fileName); // Path to your output audio file
+    const outputFilePath = path.resolve(__dirname, './downloads', fileName); // Path to your output audio file
     if (!pseudoName) {
       console.error('Please provide a name for the file');
       rl.close();
       return;
     }
-
 
     downloadAndConvertToMp3(youtubeUrl, outputFilePath)
       .then(() => {
